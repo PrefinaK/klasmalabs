@@ -109,13 +109,13 @@ Inspired by Arrived.com and supported by the open-source work of the React and T
 ## Clone
 
 ```
-   git clone https://github.com/paritytech2026/cryptocity_demo.git
+   git clone https://github.com/KlasmaLabs26/klasmalabs.git
 ```
 
 ## Change directory
 
 ```
-   cd cryptocity_demo
+   cd klasmalabs
 ```
 
 ## Install dependencies
