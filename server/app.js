@@ -16,6 +16,9 @@ app.use('/api/order', orderRouter);
 app.use('/api/payment', paymentRouter);
 app.use('/api/product', productRouter);
 app.use('/api/user', userRouter);
+const contractRoutes = require('./contractRoutes');
+
+app.use('/api/contract', contractRoutes);
 
 // deployment
 __dirname = path.resolve();

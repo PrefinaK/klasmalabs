@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -13,27 +14,39 @@ import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 
 function App() {
+  const [dark, setDark] = useState(false);
+
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/properties" element={<Properties />} />
-            <Route path="/properties/:id" element={<PropertyDetail />} />
-            <Route path="/property-3d" element={<Property3D />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path = '*' element={<NotFound/>} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className={dark ? 'dark' : ''}>
+      <Router>
+        <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+          <Navbar />
+          <div className="flex justify-end px-4 py-2">
+            <button
+              onClick={() => setDark(!dark)}
+              className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 text-sm font-medium"
+            >
+              {dark ? '☀️ Light' : '🌙 Dark'}
+            </button>
+          </div>
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/properties" element={<Properties />} />
+              <Route path="/properties/:id" element={<PropertyDetail />} />
+              <Route path="/property-3d" element={<Property3D />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </div>
   );
 }
 
